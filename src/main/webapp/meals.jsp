@@ -7,7 +7,6 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
@@ -37,7 +36,7 @@
 <h3><a href="index.html">Home</a></h3>
 <hr>
 <h2>Meals</h2>
-<h4><a href="index.html">Add meal</a></h4>
+<h4><a href="meals?action=create">Add meal</a></h4>
 <table>
     <thead>
     <td>Date</td>
@@ -50,11 +49,10 @@
         <tr class= "${meal.excess ? "exceeded" : "nexceeded"}">
             <td><fmt:parseDate value="${meal.dateTime}" pattern="yyyy-MM-dd'T'HH:mm" var="mealDate"/>
                 <fmt:formatDate value="${mealDate}" pattern="dd.MM.yyyy HH:mm"/></td>
-
             <td>${meal.description}</td>
             <td>${meal.calories}</td>
-            <td><a href="index.html">Update</a></td>
-            <td><a href="index.html">Delete</a></td>
+            <td><a href="meals?action=update&id=${meal.id}">Update</a></td>
+            <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
