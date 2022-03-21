@@ -64,7 +64,7 @@ public class JpaMealRepository implements MealRepository {
         return em.createNamedQuery(Meal.BETWEEN, Meal.class)
                 .setParameter("userId", userId)
                 .setParameter("startDateTime", startDateTime)
-                .setParameter("endDateTime", startDateTime)
+                .setParameter("endDateTime", endDateTime)
                 .getResultList();
     }
 }

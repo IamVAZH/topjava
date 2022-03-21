@@ -1,8 +1,5 @@
 package ru.javawebinar.topjava.model;
 
-
-import org.hibernate.annotations.Fetch;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,7 +14,9 @@ import java.time.LocalTime;
 })
 
 @Entity
-@Table(name = "meals")
+@Table(name = "meals",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"},
+                                                name = "meals_userid_datetime_unique")})
 public class Meal extends AbstractBaseEntity {
     public static final String DELETE = "Meal.delete";
     public static final String ALL = "Meal.getAllSorted";
