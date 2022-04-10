@@ -30,11 +30,6 @@ public class MealTo {
 
     private final boolean excess;
 
-    //@JsonCreator
-    //    public Point(@JsonProperty("x") int x, @JsonProperty("y") int y) {
-    //        this.x = x;
-    //        this.y = y;
-    //    }
     @JsonCreator
     public MealTo(@JsonProperty("id") Integer id,
                   @JsonProperty("dateTime") LocalDateTime dateTime,
