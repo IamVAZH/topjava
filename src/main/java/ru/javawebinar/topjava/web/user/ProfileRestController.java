@@ -1,9 +1,12 @@
 package ru.javawebinar.topjava.web.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.javawebinar.topjava.model.User;
+import ru.javawebinar.topjava.service.UserService;
+import ru.javawebinar.topjava.web.SecurityUtil;
 
 import static ru.javawebinar.topjava.web.SecurityUtil.authUserId;
 
@@ -32,5 +35,10 @@ public class ProfileRestController extends AbstractUserController {
     @GetMapping("/text")
     public String testUTF() {
         return "Русский текст";
+    }
+
+    @GetMapping("/with-meals")
+    public User getWithMeals() {
+        return service.getWithMeals(SecurityUtil.authUserId());
     }
 }

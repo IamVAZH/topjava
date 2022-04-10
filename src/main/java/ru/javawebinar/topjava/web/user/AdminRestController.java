@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.javawebinar.topjava.model.User;
+import ru.javawebinar.topjava.web.SecurityUtil;
 
 import java.lang.reflect.Array;
 import java.net.URI;
@@ -57,5 +58,10 @@ public class AdminRestController extends AbstractUserController {
     @GetMapping("/by-email")
     public User getByMail(@RequestParam String email) {
         return super.getByMail(email);
+    }
+
+    @GetMapping("/with-meals")
+    public User getWithMeals() {
+        return service.getWithMeals(SecurityUtil.authUserId());
     }
 }
