@@ -1,11 +1,14 @@
 package ru.javawebinar.topjava;
 
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 
+import java.time.Month;
 import java.util.Collections;
 import java.util.Date;
 
+import static java.time.LocalDateTime.of;
 import static ru.javawebinar.topjava.model.AbstractBaseEntity.START_SEQ;
 
 public class UserTestData {
@@ -33,5 +36,15 @@ public class UserTestData {
         updated.setEnabled(false);
         updated.setRoles(Collections.singletonList(Role.ADMIN));
         return updated;
+    }
+
+    public static User addMealsToUser() {
+        Meal meal1 = new Meal(USER_ID + 100, of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500);
+        Meal meal2 = new Meal(USER_ID + 101, of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500);
+        Meal meal3 = new Meal(USER_ID + 102, of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500);
+        meal1.setUser(user);
+        meal2.setUser(user);
+        meal3.setUser(user);
+        return user;
     }
 }
